@@ -11,7 +11,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\widgets\InputWidget;
-use services\models\UpFileData;
+use Yii;
 
 class MultipeWebuploader extends InputWidget{
     //默认配置
@@ -39,7 +39,7 @@ class MultipeWebuploader extends InputWidget{
             $li_list = '';
             $valueArr = explode(',', $value);
             foreach ($valueArr as $key=>$val) {
-                $img_url = UpFileData::showImage($val);
+                $img_url = Yii::$app->params['UpFileData']::showImage($val);
                 $img = strpos($img_url, 'http:') === false ? (\Yii::getAlias('@static') . '/' . $img_url) : $img_url;
                 $li_items ='';
                 $li_items .= '<li dataid="'.$val.'" id="WU_FILE_'.$key.'">';

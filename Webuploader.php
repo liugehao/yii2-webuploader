@@ -11,7 +11,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\widgets\InputWidget;
-use services\models\UpFileData;
+use Yii;
 
 class Webuploader extends InputWidget{
     //默认配置
@@ -30,7 +30,7 @@ class Webuploader extends InputWidget{
     {
         $this->registerClientJs();
         $value = Html::getAttributeValue($this->model, $this->attribute);
-        $img_url = UpFileData::showImage($value);
+        $img_url = Yii::$app->params['UpFileData']::showImage($value);
         $content = $value ?
             Html::img(
             strpos($img_url, 'http:') === false ? (\Yii::getAlias('@static') . '/' . $img_url) : $img_url,
