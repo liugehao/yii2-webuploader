@@ -117,7 +117,7 @@ class MultipeWebuploader extends InputWidget{
 
     };
     uploader.on('beforeFileQueued',function(file){
-        var size = $('#uploader ul li').size();
+        var size = $('#uploader ul li').length;
         if(size >={$this->options['number']}) {
            alert('上传图片不能超过（{$this->options['number']}）张上限');
            return false;
@@ -197,13 +197,13 @@ class MultipeWebuploader extends InputWidget{
         $('body').on("click", ".moveLeft", function(){
             var currentItem = $(this).closest("li");
             var prevItem = currentItem.prev("li");
-            prevItem.size()>0&&currentItem.insertBefore(prevItem);
+            prevItem.length>0&&currentItem.insertBefore(prevItem);
             updateImageId();
         });
         $('body').on("click", ".moveRight", function(){
             var currentItem = $(this).closest("li");
             var nextItem = currentItem.next("li");
-            nextItem.size()>0&&currentItem.insertAfter(nextItem);
+            nextItem.length>0&&currentItem.insertAfter(nextItem);
             updateImageId();
         });
          //移上去显示
